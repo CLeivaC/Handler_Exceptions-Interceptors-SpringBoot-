@@ -28,26 +28,32 @@ public class TimeInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
 
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        System.out.println(hour);
+        if ("POST".equalsIgnoreCase(request.getMethod())) {
+            Calendar calendar = Calendar.getInstance();
+            int hour = calendar.get(Calendar.HOUR_OF_DAY);
+            System.out.println(hour);
 
-        if (hour >= open && hour < close) {
-            request.setAttribute("message", "Bienvenidos al horario de atención a clientes, atendemos desde las " + open
-                    + " hrs. hasta las " + close + " hrs. Gracias por su visita!");
-                    return true;
+            if (hour >= open && hour < close) {
+                request.setAttribute("message",
+                        "Bienvenidos al horario de atención a clientes, atendemos desde las " + open
+                                + " hrs. hasta las " + close + " hrs. Gracias por su visita!");
+                return true;
+            }
+
+            ObjectMapper json = new ObjectMapper();
+            Map<String, Object> data = new HashMap<>();
+            data.put("message", "Cerrado, fuera del horario de atención, por favor visitenos desde las " + open
+                    + " y las " + close + " hrs. Gracias.");
+            data.put("date", new Date().toString());
+
+            response.setContentType("application/json");
+            response.setStatus(401);
+            response.getWriter().write(json.writeValueAsString(data));
+
+            return false;
         }
 
-        ObjectMapper json = new ObjectMapper();
-        Map<String,Object> data = new HashMap<>();
-        data.put("message", "Cerrado, fuera del horario de atención, por favor visitenos desde las "+open+" y las "+close+" hrs. Gracias.");
-        data.put("date", new Date().toString());
-
-        response.setContentType("application/json");
-        response.setStatus(401);
-        response.getWriter().write(json.writeValueAsString(data));
-
-        return false;
+        return true;
     }
 
     @Override

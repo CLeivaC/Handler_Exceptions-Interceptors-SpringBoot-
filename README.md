@@ -1,16 +1,17 @@
 # 🛠️ Handler_Exceptions-Interceptors
 
-Este es un proyecto de **Spring Boot** que implementa **interceptores personalizados** y manejo de **excepciones**, además de un sistema de gestión de productos con dos endpoints clave: `getAllProducts` y `getProductById`.
+Este es un proyecto de **Spring Boot** que implementa **interceptores personalizados** y manejo de **excepciones**, además de un sistema de gestión de productos con tres endpoints clave: `getAllProducts`,`getProductById` y `postProduct` .
 
 ## 🚀 Características Principales
 
 ### 📝 Endpoints de Productos:
 - **`GET /products`**: Obtén una lista de todos los productos disponibles.
 - **`GET /products/{id}`**: Obtén los detalles de un producto específico basado en su ID.
+- **`POST /products`**: Agrega un producto.
 
 ### 🔄 Interceptores Personalizados:
 - **`LoggerInterceptor`**: Registra la duración de las solicitudes HTTP y los métodos controladores que se ejecutan.
-- **`TimeInterceptor`**: Verifica si una solicitud se realiza dentro del horario laboral y devuelve un mensaje personalizado si está fuera de horario.
+- **`TimeInterceptor`**: Verifica si un usuario realiza un post dentro del horario laboral y devuelve un mensaje personalizado si está fuera de horario.
 
 ### ⚙️ Manejo de Excepciones:
 - Implementación de un sistema de manejo de errores para generar respuestas HTTP personalizadas en caso de excepciones.

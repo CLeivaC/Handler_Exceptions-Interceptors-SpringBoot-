@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.christian.ejercicio.springboot.interceptores.ejercicio_interceptores.models.domain.Product;
 
@@ -33,6 +34,12 @@ public class ProductsRepositoryImpl implements ProductsRepository{
     @Override
     public Optional<Product> getProductById(Long id) {
         return listProducts.stream().filter(p-> p.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public Product postProduct(@RequestBody Product product) {
+        listProducts.add(product );
+        return product;
     }
 
 }
