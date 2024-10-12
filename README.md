@@ -29,7 +29,36 @@ Este es un proyecto de **Spring Boot** que implementa **interceptores personaliz
 
 ## 📂 Estructura del Proyecto
 
-src/ └── main/ └── java/ └── com/ └── christian/ └── ejercicio/ └── springboot/ ├── interceptores/ │ ├── interceptors/ │ │ ├── LoggerInterceptor.java │ │ └── TimeInterceptor.java │ ├── MvcConfig.java │ └── Application.java ├── repositories/ │ ├── ProductRepository.java │ └── ProductRepositoryImpl.java ├── services/ │ ├── ProductsService.java │ └── ProductsServiceImpl.java ├── controllers/ │ ├── ProductsController.java │ └── HandlerExceptions.java ├── models/ │ ├── Error.java │ └── domain/ │ └── Product.java └── Exceptions/ └── ProductNotFoundException.java
+```plaintext
+src/
+└── main/
+    └── java/
+        └── com/
+            └── christian/
+                └── ejercicio/
+                    └── springboot/
+                        ├── interceptores/
+                        │   ├── interceptors/
+                        │   │   ├── LoggerInterceptor.java
+                        │   │   └── TimeInterceptor.java
+                        │   ├── MvcConfig.java
+                        │   └── Application.java
+                        ├── repositories/
+                        │   ├── ProductRepository.java
+                        │   └── ProductRepositoryImpl.java
+                        ├── services/
+                        │   ├── ProductsService.java
+                        │   └── ProductsServiceImpl.java
+                        ├── controllers/
+                        │   ├── ProductsController.java
+                        │   └── HandlerExceptions.java
+                        ├── models/
+                        │   ├── Error.java
+                        │   └── domain/
+                        │       └── Product.java
+                        └── Exceptions/
+                            └── ProductNotFoundException.java
+
 
 ### Archivos Clave:
 - **`LoggerInterceptor.java`**: Mide el tiempo de cada solicitud HTTP y registra el nombre del método controlador.
